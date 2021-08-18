@@ -1,4 +1,4 @@
-const process = require('child_process');
+const cprocess = require('child_process');
 const fs = require('fs');
 const request = require('request');
 require('./logger.js');
@@ -93,7 +93,7 @@ function check() {
         return;
     }
     console.log("检查磁盘空间");
-    process.exec('df -h', function (error, stdout, stderr) {
+    cprocess.exec('df -h', function (error, stdout, stderr) {
         if (error !== null) {
             console.log('exec error: ' + error);
         } else {
@@ -171,7 +171,17 @@ function findFs(fsarray, fsname) {
     return null;
 }
 if (os.platform() != 'linux' && os.platform() != 'darwin') {
-    console.log("该程序目前只支持linux！");
+    console.log("该程序目前只支持linux，按回车退出！");
+
+    const readline = require('readline');
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    rl.question('', () => {
+        rl.close();
+    });
+
     return;
 }
 

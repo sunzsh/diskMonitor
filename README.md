@@ -8,7 +8,7 @@ linux磁盘占用率监控，webhook报警
     "serverName": "通知信息中的服务器名字，例如：xxx服务器",
     "disks": [
         {
-            "filesystem": "磁盘地址，例如：/dev/vda1",
+            "filesystem": "磁盘地址，可以用df -h命令找到要监控的磁盘，例如：/dev/vda1",
             "use": 95 // 使用率警戒线
         }
     ]

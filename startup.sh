@@ -1,0 +1,1 @@
+nohup ./diskMonitor >> ./output.log 2>&1 & echo $! > .diskMonitor.pid
